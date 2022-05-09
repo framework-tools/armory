@@ -124,9 +124,8 @@ fn publish_crate(
             publish_crate(workspace, cfg, local_dep, all_packages, already_published);
         }
     }
-    println!("ARMORY: publishing {}", current_package);
 
-    retry_with_index(delay::Fibonacci::from_millis(2000), |current_try| {
+    retry_with_index(delay::Fibonacci::from_millis(2500), |current_try| {
         match cargo::ops::publish(
             workspace,
             &PublishOpts {
@@ -148,6 +147,9 @@ fn publish_crate(
                 if current_try > 6 {
                     panic!("ARMORY: failed to publish {} after {} attempts: {:#?}",
                             current_package, current_try, e);
+                } else {
+                    println!("ARMORY: failed to publish {} after {} attempts: {:#?}",
+                        current_package, current_try, e);
                 }
                 Err(e)
             }

@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "armory_lib",
+    "armory_cli",
+]

@@ -1,17 +1,14 @@
 [package]
 name = "armory_cli"
-version = "0.1.0"
+version = "0.4.0"
 edition = "2021"
 description = "Cargo workspaces tool"
 license = "MIT"
 
-# [[bin]]
-# name = "armory"
-# test = false
-# bench = false
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "cargo-armory"
+path = "./src/main.rs"
 
 [dependencies]
-armory_lib = { path = "../armory_lib" }
+armory_lib = { version = "0.4.0", path = "../armory_lib" }
 dialoguer = "0.10.1"
-semver = "1.0.9"
